@@ -86,7 +86,7 @@ The Horizon Car Rental System is designed to automate the car rental process, im
 
 ## Licensing
 
-This project is licensed under the MIT License. See the [LICENSE](C:\Users\Apoorva Khandelwal\Yoobee\horizonCarRental\LICENSE.txt) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file for details.
 
 ## Known Issues
 
