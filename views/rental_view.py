@@ -1,44 +1,40 @@
+from datetime import datetime
+
 class RentalView:
     def get_rental_details(self, available_cars):
         """Prompt for rental details including car selection."""
-        car_id = input("Enter the car ID you want to rent: ")
+        while True:
+            car_id = input("Enter the car ID you want to rent: ").strip()
+            if not car_id.isdigit() or car_id not in [str(car['id']) for car in available_cars]:
+                print("Invalid car ID. Please select a valid car ID from the list.")
+                continue
 
-        # Print available car IDs for debugging
-        available_car_ids = [str(car['id']) for car in available_cars]
-        print(f"Available car IDs: {available_car_ids}")
+            start_date = input("Enter rental start date (YYYY-MM-DD): ").strip()
+            end_date = input("Enter rental end date (YYYY-MM-DD): ").strip()
 
-        # Check if car_id is in available_car_ids
-        if car_id not in available_car_ids:
-            print("Invalid car ID.")
-            return None, None, None, None
+            try:
+                start_date_obj = datetime.strptime(start_date, '%Y-%m-%d').date()
+                end_date_obj = datetime.strptime(end_date, '%Y-%m-%d').date()
+                today = datetime.now().date()
+                if start_date_obj <= today:
+                    print("Error: Start date must be after today's date.")
+                    continue
+                if start_date_obj >= end_date_obj:
+                    print("Error: Start date must be before end date.")
+                    continue
+                rental_period = (end_date_obj - start_date_obj).days
+                if rental_period <= 0:
+                    print("Error: Rental period must be greater than zero.")
+                    continue
 
-        start_date = input("Enter rental start date (YYYY-MM-DD): ")
-        end_date = input("Enter rental end date (YYYY-MM-DD): ")
-
-        # Validate and calculate total cost
-        from datetime import datetime
-        try:
-            start_date_obj = datetime.strptime(start_date, '%Y-%m-%d')
-            end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
-        except ValueError:
-            print("Error: Dates must be in the format YYYY-MM-DD.")
-            return None, None, None, None
-
-        rental_period = (end_date_obj - start_date_obj).days
-
-        if rental_period <= 0:
-            print("Rental period must be greater than zero.")
-            return None, None, None, None
-
-        car = next((car for car in available_cars if str(car['id']) == car_id), None)
-        if car:
-            daily_rate = car['daily_rate']
-            total_cost = daily_rate * rental_period
-        else:
-            print("Error: Car not found.")
-            return None, None, None, None
-
-        return car_id, start_date, end_date, total_cost
+                car = next((car for car in available_cars if str(car['id']) == car_id), None)
+                if car:
+                    total_cost = car['daily_rate'] * rental_period
+                    return car_id, start_date, end_date, total_cost
+                else:
+                    print("Error: Car not found.")
+            except ValueError:
+                print("Error: Dates must be in the format YYYY-MM-DD.")
 
     def display_cars(self, cars):
         """Display a list of available cars."""

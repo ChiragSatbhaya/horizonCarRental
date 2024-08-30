@@ -52,6 +52,15 @@ class Car:
                   f"Available Now: {car[5]}, Min Rent Period: {car[6]}, Max Rent Period: {car[7]}")
         return self.crud.db.fetchall(query, dictionary=True)
 
+    def update_car_availability(self, car_id, available):
+        """Update the availability of a car."""
+        query = "UPDATE cars SET available_now = %s WHERE id = %s"
+        try:
+            self.db.execute_query(query, (available, car_id))
+            print(f"Car {car_id} availability updated successfully.")
+        except Exception as e:
+            print(f"Error updating car availability: {e}")
+
     def find_cars_by_preferences(self, preferences):
         """Find cars based on user preferences."""
         query = """

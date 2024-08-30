@@ -2,6 +2,7 @@ from models.crud_operations import CrudOperations
 from models.car import Car
 from views.rental_view import RentalView
 from models.rental import Rental
+from datetime import datetime
 
 class RentalController:
     def __init__(self, db):
@@ -34,9 +35,6 @@ class RentalController:
         # Use the user ID from the logged-in user object
         user_id = user['id']
 
-        print(
-            f"Entered details: user_id={user_id}, car_id={car_id}, start_date={start_date}, end_date={end_date}, total_cost={total_cost}")  # Debug print
-
         if not car_id or not start_date or not end_date or total_cost is None:
             print("Invalid rental details.")
             return
@@ -47,7 +45,19 @@ class RentalController:
 
         # Proceed with booking
         self.rental_model.create_rental(user_id, car_id, start_date, end_date, total_cost)
+        self.car_model.update_car_availability(car_id, False)  # Set car as not available
         self.rental_view.show_booking_success()
+
+    def validate_rental_dates(self, start_date, end_date):
+        """Validate rental dates."""
+        try:
+            start_date_obj = datetime.strptime(start_date, '%Y-%m-%d')
+            end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
+            today = datetime.now().date()
+            return start_date_obj > today and start_date_obj < end_date_obj
+        except ValueError:
+            print("Error: Dates must be in the format YYYY-MM-DD.")
+            return False
 
     def view_user_bookings(self, user):
         """Display bookings made by a specific user."""

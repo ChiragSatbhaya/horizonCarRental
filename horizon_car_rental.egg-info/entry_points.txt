@@ -1,0 +1,2 @@
+[console_scripts]
+horizon_car_rental = main:main

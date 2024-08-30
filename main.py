@@ -3,7 +3,6 @@ from controllers.user_controller import UserController
 from controllers.car_controller import CarController
 from controllers.rental_controller import RentalController
 from models.db_connection import Database
-from models.car import Car
 
 def main():
     # Initialize the database connection
@@ -22,21 +21,21 @@ def main():
         print("3. User Login")
         print("4. Exit")
 
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            admin = admin_controller.login()
-            if admin:
-                admin_menu(admin_controller, car_controller, rental_controller)
-        elif choice == '2':
-            user_controller.register()
-        elif choice == '3':
-            user = user_controller.login()
-            if user:
-                user_menu(user, car_controller, rental_controller)
-        elif choice == '4':
-            print("Thank you for using Horizon Car Rental System. Goodbye!")
-            break
+        choice = input("Enter your choice: ").strip()
+        if choice in ['1', '2', '3', '4']:
+            if choice == '1':
+                admin = admin_controller.login()
+                if admin:
+                    admin_menu(admin_controller, car_controller, rental_controller)
+            elif choice == '2':
+                user_controller.register()
+            elif choice == '3':
+                user = user_controller.login()
+                if user:
+                    user_menu(user, car_controller, rental_controller)
+            elif choice == '4':
+                print("Thank you for using Horizon Car Rental System. Goodbye!")
+                break
         else:
             print("Invalid choice, please try again.")
 
@@ -47,15 +46,15 @@ def admin_menu(admin_controller, car_controller, rental_controller):
         print("2. Manage Rentals")
         print("3. Logout")
 
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            manage_cars(car_controller)
-        elif choice == '2':
-            manage_rentals(rental_controller)
-        elif choice == '3':
-            print("Logging out...")
-            break
+        choice = input("Enter your choice: ").strip()
+        if choice in ['1', '2', '3']:
+            if choice == '1':
+                manage_cars(car_controller)
+            elif choice == '2':
+                manage_rentals(rental_controller)
+            elif choice == '3':
+                print("Logging out...")
+                break
         else:
             print("Invalid choice, please try again.")
 
@@ -68,20 +67,19 @@ def user_menu(user, car_controller, rental_controller):
         print("4. Get Car Recommendations")
         print("5. Logout")
 
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            car_controller.view_available_cars()
-        elif choice == '2':
-            rental_controller.book_car(user)
-        elif choice == '3':
-            print(f"User details: {user}")  # Debug statement
-            rental_controller.view_user_bookings(user)
-        elif choice == '4':
-            car_controller.recommend_cars(user)
-        elif choice == '5':
-            print("Logging out...")
-            break
+        choice = input("Enter your choice: ").strip()
+        if choice in ['1', '2', '3', '4', '5']:
+            if choice == '1':
+                car_controller.view_available_cars()
+            elif choice == '2':
+                rental_controller.book_car(user)
+            elif choice == '3':
+                rental_controller.view_user_bookings(user)
+            elif choice == '4':
+                car_controller.recommend_cars(user)
+            elif choice == '5':
+                print("Logging out...")
+                break
         else:
             print("Invalid choice, please try again.")
 
@@ -94,20 +92,26 @@ def manage_cars(car_controller):
         print("4. View All Cars")
         print("5. Back to Admin Menu")
 
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            car_controller.add_car()
-        elif choice == '2':
-            car_id = int(input("Enter the ID of the car to update: "))
-            car_controller.update_car(car_id)
-        elif choice == '3':
-            car_id = int(input("Enter the ID of the car to delete: "))
-            car_controller.delete_car(car_id)
-        elif choice == '4':
-            car_controller.view_all_cars()
-        elif choice == '5':
-            break
+        choice = input("Enter your choice: ").strip()
+        if choice in ['1', '2', '3', '4', '5']:
+            if choice == '1':
+                car_controller.add_car()
+            elif choice == '2':
+                car_id = input("Enter the ID of the car to update: ").strip()
+                if car_id.isdigit():
+                    car_controller.update_car(int(car_id))
+                else:
+                    print("Invalid car ID.")
+            elif choice == '3':
+                car_id = input("Enter the ID of the car to delete: ").strip()
+                if car_id.isdigit():
+                    car_controller.delete_car(int(car_id))
+                else:
+                    print("Invalid car ID.")
+            elif choice == '4':
+                car_controller.view_all_cars()
+            elif choice == '5':
+                break
         else:
             print("Invalid choice, please try again.")
 
@@ -129,5 +133,5 @@ def manage_rentals(rental_controller):
         else:
             print("Invalid choice, please try again.")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

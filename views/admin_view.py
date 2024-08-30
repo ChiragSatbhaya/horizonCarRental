@@ -9,8 +9,12 @@ class AdminView:
 
     def confirm_deletion(self):
         """Ask for confirmation before deleting a user."""
-        confirmation = input("Are you sure you want to delete this user? (yes/no): ")
-        return confirmation.lower() == 'yes'
+        while True:
+            confirmation = input("Are you sure you want to delete this user? (yes/no): ").lower()
+            if confirmation in ['yes', 'no']:
+                return confirmation == 'yes'
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
 
     def show_deletion_success(self):
         """Display a success message for user deletion."""
@@ -42,13 +46,17 @@ class AdminView:
 
     def get_login_credentials(self):
         """Prompt the admin for their username and password."""
-        username = input("Enter admin username: ")
-        password = input("Enter admin password: ")
-        return username, password
+        while True:
+            username = input("Enter admin username: ").strip()
+            password = input("Enter admin password: ").strip()
+            if username and password:
+                return username, password
+            else:
+                print("Username and password cannot be empty.")
 
     def show_login_success(self, admin):
-        """Display a success message when login is successfully."""
-        print(f"Admin login successfully.")
+        """Display a success message when login is successful."""
+        print("Admin login successfully.")
 
     def show_login_failure(self):
         """Display a message when login fails."""
@@ -76,5 +84,9 @@ class AdminView:
 
     def get_rental_action(self):
         """Prompt for the action to take on a rental request."""
-        action = input("Enter action for rental (approve/reject): ")
-        return action.lower()
+        while True:
+            action = input("Enter action for rental (approve/reject): ").strip().lower()
+            if action in ['approve', 'reject']:
+                return action
+            else:
+                print("Invalid action. Please enter 'approve' or 'reject'.")

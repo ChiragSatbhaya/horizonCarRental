@@ -1,24 +1,42 @@
 class CarView:
     def get_car_details(self):
         """Prompt for car details to add or update a car."""
-        make = input("Enter car make: ")
-        model = input("Enter car model: ")
-        year = input("Enter car year: ")
-        mileage = input("Enter car mileage: ")
-        available_now = input("Is the car available now? (yes/no): ").lower() == 'yes'
-        min_rent_period = int(input("Enter minimum rent period (in days): "))
-        max_rent_period = int(input("Enter maximum rent period (in days): "))
+        make = input("Enter car make: ").strip()
+        model = input("Enter car model: ").strip()
+
+        while True:
+            try:
+                year = int(input("Enter car year (e.g., 2022): "))
+                mileage = int(input("Enter car mileage: "))
+                min_rent_period = int(input("Enter minimum rent period (in days): "))
+                max_rent_period = int(input("Enter maximum rent period (in days): "))
+                if min_rent_period > 0 and max_rent_period >= min_rent_period:
+                    break
+                else:
+                    print("Min rent period must be > 0 and max rent period must be >= min rent period.")
+            except ValueError:
+                print("Invalid input. Please enter valid integers for year, mileage, and rent periods.")
+
+        available_now = input("Is the car available now? (yes/no): ").strip().lower() == 'yes'
         return make, model, year, mileage, available_now, min_rent_period, max_rent_period
 
     def get_user_preferences(self):
         """Prompt the user for their car preferences."""
-        print("Enter your car preferences:")
-        make = input("Preferred make: ")
-        model = input("Preferred model: ")
-        min_price = input("Minimum price: ")
-        max_price = input("Maximum price: ")
-        min_year = input("Minimum year: ")
-        max_year = input("Maximum year: ")
+        make = input("Preferred make: ").strip()
+        model = input("Preferred model: ").strip()
+
+        while True:
+            try:
+                min_price = float(input("Minimum price: "))
+                max_price = float(input("Maximum price: "))
+                min_year = int(input("Minimum year: "))
+                max_year = int(input("Maximum year: "))
+                if min_price >= 0 and max_price >= min_price and min_year > 0 and max_year >= min_year:
+                    break
+                else:
+                    print("Invalid range. Ensure prices and years are valid.")
+            except ValueError:
+                print("Invalid input. Please enter valid numbers.")
 
         return {
             'make': make,

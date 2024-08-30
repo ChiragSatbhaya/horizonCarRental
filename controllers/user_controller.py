@@ -63,4 +63,3 @@ class UserController:
         if confirmation:
             self.crud_operations.cancel_booking(booking_id)
             self.user_view.show_cancellation_success()
-

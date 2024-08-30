@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5deb6b2a-be27-4102-9471-3ca5045c310d" name="Changes" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/admin_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/admin_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/car_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/car_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/rental_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/rental_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/car.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/car.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/crud_operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/crud_operations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/db_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/db_connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/rental.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/rental.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/car_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/car_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/rental_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/rental_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/user_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/user_view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,23 +62,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.admin_controller.executor&quot;: &quot;Run&quot;,
-    &quot;Python.car_rental_system.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dbConnecter.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dbConnector.executor&quot;: &quot;Run&quot;,
-    &quot;Python.db_connection.executor&quot;: &quot;Run&quot;,
-    &quot;Python.db_setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.user_controller.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Apoorva Khandelwal/Yoobee/horizonCarRental&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.admin_controller.executor": "Run",
+    "Python.car_rental_system.executor": "Run",
+    "Python.config.executor": "Run",
+    "Python.dbConnecter.executor": "Run",
+    "Python.dbConnector.executor": "Run",
+    "Python.db_connection.executor": "Run",
+    "Python.db_setup.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.user.executor": "Run",
+    "Python.user_controller.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Apoorva Khandelwal/Yoobee/horizonCarRental"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Apoorva Khandelwal\Yoobee\carRental" />
@@ -139,8 +157,27 @@
       <option name="project" value="LOCAL" />
       <updated>1724812486660</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1724812583789</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724812583789</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
